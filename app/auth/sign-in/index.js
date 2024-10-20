@@ -12,6 +12,7 @@ import { Colors } from "../../../constants/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../configs/FirebaseConfig";
+
 export default function SignIn() {
   const router = useRouter();
   const navigation = useNavigation();
@@ -32,7 +33,7 @@ export default function SignIn() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        router.replace("./mytrip");
+        router.replace("../../tabs/mytrip");
         console.log("helllo");
 
         // ...
@@ -43,6 +44,7 @@ export default function SignIn() {
         if (errorCode == "auth/invalid-credential") {
           ToastAndroid.show("Invalid credential", ToastAndroid.LONG);
         }
+        router.replace("../../tabs/mytrip");
         console.log("error");
       });
   };
